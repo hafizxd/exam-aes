@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendant;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Session;
@@ -63,7 +64,7 @@ class SessionController extends Controller
 
     public function edit($id)
     {
-        $session = Session::findOrFail($id);
+        $session = Session::with('attendants')->findOrFail($id);
         $tests = Test::all();
 
         return view('sessions.edit', compact('session', 'tests'));
@@ -89,5 +90,12 @@ class SessionController extends Controller
         Session::findOrFail($id)->delete();
 
         return redirect()->back();
+    }
+
+    public function showAttendant($id, $attendantId)
+    {
+        $attendant = Attendant::with('attendantAnswers.testQuestion')->findOrFail($attendantId);
+
+        return view('sessions.attendant', compact('attendant'));
     }
 }

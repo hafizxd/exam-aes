@@ -16,7 +16,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('session.index') }}">
-                        <img src="{{ asset('/logo_text_1.png') }}" class="w-auto h-9 fill-current text-gray-500" alt="">
+                        <img src="{{ asset('/logo_text_1.jpg') }}" class="w-auto h-9 fill-current text-gray-500" alt="">
                     </a>
                 </div>
 
